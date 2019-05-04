@@ -1,0 +1,1 @@
+alert('Chào thế giới');
