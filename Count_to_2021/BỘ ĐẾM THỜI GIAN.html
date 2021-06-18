@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)file:///D:/FontEnd/NewYearCounter.htm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BỘ ĐẾM THỜI GIAN</title>
+        <link rel="stylesheet" href="./BỘ ĐẾM THỜI GIAN_files/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="./BỘ ĐẾM THỜI GIAN_files/css2" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <h2><span>Hãy Cùng Nhau Đếm Ngược Đến Năm</span> 2021</h2>
+            <div class="countdown">
+                <div id="days">13</div>
+                <div id="hours">7</div>
+                <div id="minutes">0</div>
+                <div id="seconds">30</div>
+            </div>
+        </div>
+    
+    <script type="text/javascript">
+        /*Lấy thời gian tết âm lịch (mily giây)*/
+        var tetAmLich = new Date(2021, 1, 12, 0, 0, 0).getTime();
+        
+        function newYear() {
+            /*Lấy thời gian ngày hiện tại (mily giây) */
+            var ngayHienTai = new Date().getTime();
+
+            /*Tính thời gian còn lại (mily giây) */
+            thoigianConLai = tetAmLich - ngayHienTai;
+
+            /*Chuyển đơn vị thời gian tương ứng sang mili giây*/
+            var giay = 1000;
+            var phut = giay * 60;
+            var gio = phut * 60;
+            var ngay = gio * 24;
+
+            /*Tìm ra thời gian theo ngày, giờ, phút giây còn lại thông qua cách chia lấy dư(%) và làm tròn số(Math.floor) trong Javascript*/
+            var d = Math.floor(thoigianConLai / (ngay));
+            var h = Math.floor((thoigianConLai % (ngay)) / (gio));
+            var m = Math.floor((thoigianConLai % (gio)) / (phut));
+            var s = Math.floor((thoigianConLai % (phut)) / (giay));
+
+            /*Hiển thị kết quả ra các thẻ Div với ID tương ứng*/
+            document.getElementById("days").innerText = d;
+            document.getElementById("hours").innerText = h;
+            document.getElementById("minutes").innerText = m;
+            document.getElementById("seconds").innerText = s;
+        }
+
+        /*Thiết Lập hàm sẽ tự động chạy lại sau 1s*/
+        setInterval(function () {
+
+            newYear()
+        }, 200)
+    </script>
+</body></html>
