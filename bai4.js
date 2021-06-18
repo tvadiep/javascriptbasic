@@ -1,1 +1,0 @@
-alert('Chào thế giới');
